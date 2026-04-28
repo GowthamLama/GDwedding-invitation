@@ -555,7 +555,16 @@ img {
     from { box-shadow: 0 0 15px rgb(255, 0, 183); }
     to { box-shadow: 0 0 30px rgb(255, 255, 255); }
 }
+.qr-box img {
+    width: 140px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+    transition: 0.3s;
+}
 
+.qr-box img:hover {
+    transform: scale(1.1);
+}    
 </style>
 </head>
 
@@ -642,12 +651,22 @@ img {
 
     </div>
 </div>
-    
-<!-- GET DIRECTIONS BUTTON -->
-    <a href="https://maps.app.goo.gl/yYFw2fxuQkhZQKKz5" target="_blank" class="direction-btn">
-        📍 Get Directions
-    </a>
-</div>
+<div class="qr-section">
+    <div class="qr-card">
+
+        <h3>📍 Scan to Navigate</h3>
+
+       <!-- YOUR QR IMAGE -->
+        <div class="qr-box">
+            <a href="https://maps.app.goo.gl/yYFw2fxuQkhZQKKz5" target="_blank">
+                <img src="https://i.ibb.co/C5b7Wv5j/qrcode.png" alt="QR Code">
+            </a>
+        </div>
+
+        <p class="qr-text">Scan or tap to open location</p>
+
+    </div>
+</div>    
     
 <div style="text-align:center;">
     <button class="wish-btn" onclick="hearts()">💖 Wish Us</button>
