@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(10,10,30,0.85), rgba(10,10,30,0.95)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552');
+    background-size: cover;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* INTRO ANIMATION */
+body {
+    animation: fadeIn 2s ease;
+}
+@keyframes fadeIn {
+    from {opacity:0; transform: scale(1.05);}
+    to {opacity:1; transform: scale(1);}
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.hero img {
+    width: 300px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    transition: transform 1s ease;
+}
+
+/* TEXT */
+.center-text {
+    max-width: 500px;
+    margin: auto;
+}
+
+.center-text h1 {
+    font-family: 'Playfair Display', serif;
+    color: gold;
+    font-size: 38px;
+}
+
+.names {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 50px;
+    color: black;
+    text-shadow: 0 0 20px white;
+    -webkit-text-stroke: 1px white;
+}
+
+.names span {
+    display: block;
+}
+
+/* COUNTDOWN */
+.countdown {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 20px;
+    color: rgb(0, 229, 255);
+    animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+    from {transform: scale(1);}
+    to {transform: scale(1.1);}
+}
+
+/* PETALS */
+.petal {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    color: pink;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.9);
+    color: black;
+    margin: 40px auto;
+    padding: 25px;
+    width: 85%;
+    border-radius: 20px;
+
+    text-align: center;   /* 🔥 this centers text */
+}
+
+/* DETAILS */
+.details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.details div {
+    margin: 10px;
+}
+.details h3 {
+    color: gold;
+}
+
+/* BUTTON */
+.wish-btn {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* UNIVERSAL RESPONSIVE FIX */
+
+/* Make everything flexible */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevent text overflow */
+.names {
+    word-wrap: break-word;
+    text-align: center;
+}
+
+/* Small mobile (extra small devices) */
+@media (max-width: 480px) {
+
+    .hero {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .hero img {
+        width: 180px;
+    }
+
+    .names {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+
+    .center-text h1 {
+        font-size: 24px;
+    }
+
+    .countdown {
+        font-size: 18px;
+    }
+
+    .card {
+        width: 95%;
+        padding: 15px;
+    }
+}   
+
+/* Tablet */
+@media (max-width: 768px) {
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero img {
+        width: 220px;
+    }
+
+    .names {
+        font-size: 42px;
+    }
+}
+
+/* Large screens (TV / big monitors) */
+@media (min-width: 1200px) {
+
+    .hero {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .card {
+        max-width: 900px;
+    }
+}
+
+/* MAP SECTION */
+.map-section {
+    text-align: center;
+    margin: 40px 20px;
+}
+
+/* GLOW CONTAINER */
+.map-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* MAP IFRAME */
+.map-container iframe {
+    width: 100%;
+    height: 280px;
+    border: none;
+    border-radius: 20px;
+}
+
+/* ✨ GLOW EFFECT */
+.map-container::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+
+/* GOLD CINEMATIC GRADIENT */
+    background: linear-gradient(
+        120deg,
+        #00e5ff,
+        #000000,
+        #ffffff,
+        #ff00f7,
+        #ff005d
+    );
+
+    z-index: -1;
+
+/* ✨ SOFT CINEMATIC GLOW */
+    filter: blur(8px);
+    opacity: 0.9;
+
+    animation: glowMove 8s linear infinite;
+}
+
+/* SMOOTH ROTATION */
+@keyframes glowMove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* BUTTON HOVER */
+.direction-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgb(0, 179, 255);
+}
+
+/* COUNTDOWN CARD */
+.countdown-card {
+   
+    color: #ffffff;
+    margin: 40px auto;
+    padding: 25px;
+    width: 80%;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}       
+
+/* TIME BOX */
+.time-box {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .countdown-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .time-box span {
+        font-size: 28px;
+    }
+}
+
+.time-box span {
+    text-shadow: 0 0 10px rgb(255, 0, 242);
+}
+
+/* NUMBERS */
+.time-box span {
+    font-size: 32px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+
+    animation: pop 0.5s ease;
+}
+
+/* LABEL */
+.time-box p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+/* POP ANIMATION */
+@keyframes pop {
+    0% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.direction-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    border-radius: 30px;
+
+    background: linear-gradient(45deg, rgb(255, 255, 255), rgb(7, 7, 7));
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-decoration: none;
+
+    z-index: 10;              /* 🔥 ensures it's visible */
+    position: relative;       /* important */
+
+    box-shadow: 0 0 15px rgba(255, 0, 119, 0.6);
+    transition: 0.3s ease;
+}   
+
+/* DETAIL BOX STYLE */
+.detail-box {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+/* SHOW ANIMATION */
+.animated-details.show .detail-box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* STAGGER EFFECT (one by one) */
+.animated-details.show .detail-box:nth-child(1) {
+    transition-delay: 0.2s;
+}
+.animated-details.show .detail-box:nth-child(2) {
+    transition-delay: 0.4s;
+}
+.animated-details.show .detail-box:nth-child(3) {
+    transition-delay: 0.6s;
+}
+
+/* OPTIONAL HOVER GLOW */
+.detail-box:hover {
+    transform: translateY(-5px) scale(1.05);
+    transition: 0.3s;
+}
+
+.detail-box h3 {
+    text-shadow: 0 0 10px rgb(251, 250, 251);
+}   
+
+/* SECTION */
+.ultra-details {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 50px 20px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.detail-card {
+    position: relative;
+    width: 250px;
+    padding: 25px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+
+    text-align: center;
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    /* animation */
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition: all 0.6s ease;
+}
+
+/* SHOW ANIMATION */
+.ultra-details.show .detail-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* STAGGER */
+.ultra-details.show .detail-card:nth-child(1) { transition-delay: 0.2s; }
+.ultra-details.show .detail-card:nth-child(2) { transition-delay: 0.4s; }
+.ultra-details.show .detail-card:nth-child(3) { transition-delay: 0.6s; }
+
+/* ICON */
+.icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* TITLE */
+.detail-card h3 {
+    color: rgb(253, 0, 211);
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgb(255, 0, 144);
+}
+
+/* TEXT */
+.detail-card p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ✨ GOLD GLOW BORDER */
+.detail-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(120deg, rgb(255, 255, 255), rgb(0, 0, 0), rgba(255, 255, 255, 0.41), rgb(3, 3, 3));
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+/* 🖱️ HOVER EFFECT */
+.detail-card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.detail-card:hover::before {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .detail-card {
+        width: 90%;
+    }
+}
+/* SECTION */
+.qr-section {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* CARD */
+.qr-card {
+    position: relative;
+    padding: 25px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+
+    text-align: center;
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 0 25px rgba(255,215,0,0.3);
+}
+
+/* TITLE */
+.qr-card h3 {
+    color: gold;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px gold;
+}
+
+/* QR WRAPPER */
+.qr-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* QR IMAGE */
+.qr-wrapper img {
+    width: 180px;
+    border-radius: 12px;
+}
+
+/* ✨ SCANNING LINE */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, gold, transparent);
+    animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+/* TEXT */
+.qr-text {
+    font-size: 13px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+/* GLOW BORDER */
+.qr-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(120deg, rgb(255, 255, 255), rgb(0, 0, 0), rgba(255, 255, 255, 0.47), rgb(0, 0, 0));
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0.8;
+}
+.qr-card {
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { box-shadow: 0 0 15px rgb(255, 0, 183); }
+    to { box-shadow: 0 0 30px rgb(255, 255, 255); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <img src="https://i.ibb.co/VWLmpgC1/file-2.png">
+
+    <div class="center-text">
+        <h1>திருமண அழைப்பிதழ்</h1>
+        <p>Wedding Invitation</p>
+
+        <div class="names">
+            <span>GOWTHAM ❤️</span>
+            <span>DEVADHARSHINI</span>
+        </div>
+    </div>
+
+    <img src="https://i.ibb.co/0VXTzt2W/file-1.png">
+</div>
+
+<div class="countdown-card" id="countdown">
+    <div class="time-box">
+        <span id="days">0</span>
+        <p>Days</p>
+    </div>
+    <div class="time-box">
+        <span id="hours">0</span>
+        <p>Hours</p>
+    </div>
+    <div class="time-box">
+        <span id="minutes">0</span>
+        <p>Minutes</p>
+    </div>
+    <div class="time-box">
+        <span id="seconds">0</span>
+        <p>Seconds</p>
+    </div>
+</div>  
+
+<div class="card">
+    <h2>We Invite You</h2>
+    <p>Free food, drinks and endless opportunities to make memories - Who want to miss all that? Join us to celebrate our love.</p>
+    <h2>அன்புடன் அழைக்கிறோம்</h2>
+    <p>இலவச உணவு, பானங்கள் மற்றும் நினைவுகளைப் பதிவு செய்ய முடிவற்ற வாய்ப்புகள் - இதையெல்லாம் யார் தான் தவறவிட விரும்புவார்கள்? எங்கள் அன்பைக் கொண்டாட எங்களுடன் இணையுங்கள்.</p>
+</div>
+
+<div class="details ultra-details">
+
+    <div class="detail-card">
+        <div class="icon">📅</div>
+        <h3>DATE</h3>
+        <p>03 June 2026 <br> 04 June 2026</p>
+    </div>
+
+    <div class="detail-card">
+        <div class="icon">⏰</div>
+        <h3>TIME</h3>
+        <p>7:00 PM – 9:00 PM <br> 6:15 AM – 6:45 AM</p>
+    </div>
+
+    <div class="detail-card">
+        <div class="icon">📍</div>
+        <h3>VENUE</h3>
+        <p>K.M. Thirumana Mandapam</p>
+    </div>
+
+</div>
+
+<div class="map-section">
+    <h3>📍 Venue Location</h3>
+
+<!-- MAP CONTAINER -->
+<div class="qr-section">
+    <div class="qr-card">
+
+        <h3>📍 Scan to Navigate</h3>
+
+        <iframe 
+            src="https://www.google.com/maps?q=K.M%20Thirumana%20Mandapam&output=embed">
+        </iframe>
+
+        <p class="qr-text">Tap to open location</p>
+
+    </div>
+</div>
+
+<!-- GET DIRECTIONS BUTTON -->
+    <a href="https://maps.app.goo.gl/yYFw2fxuQkhZQKKz5" target="_blank" class="direction-btn">
+        📍 Get Directions
+    </a>
+</div>
+
+<div style="text-align:center;">
+    <button class="wish-btn" onclick="hearts()">💖 Wish Us</button>
+</div>
+
+<script>
+
+// COUNTDOWN ANIMATION
+const weddingDate = new Date("June 3, 2026 19:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const gap = weddingDate - now;
+
+    const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+    const h = Math.floor((gap / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((gap / (1000 * 60)) % 60);
+    const s = Math.floor((gap / 1000) % 60);
+
+    document.getElementById("days").innerText = d;
+    document.getElementById("hours").innerText = h;
+    document.getElementById("minutes").innerText = m;
+    document.getElementById("seconds").innerText = s;
+
+}, 1000);
+
+const details = document.querySelector(".animated-details");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            details.classList.add("show");
+        }
+    });
+}); 
+
+const ultraDetails = document.querySelector(".ultra-details");
+
+const observer2 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            ultraDetails.classList.add("show");
+        }
+    });
+});
+
+observer2.observe(ultraDetails);
+
+observer.observe(details);
+
+//  MAP CONTAINER
+document.addEventListener("DOMContentLoaded", function () {
+
+    const mapURL = "https://maps.app.goo.gl/yYFw2fxuQkhZQKKz5";
+    const qrImg = document.getElementById("qrCode");
+    const qrLink = document.getElementById("qrLink");
+
+    function updateQR() {
+        const unique = new Date().getTime(); // 🔄 force refresh
+
+        qrImg.src =
+        "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="
+        + encodeURIComponent(mapURL) + "&t=" + unique;
+
+        qrLink.href = mapURL;
+    }
+
+    updateQR();
+
+    // 🔄 auto refresh every 10 seconds
+    setInterval(updateQR, 10000);
+
+});
+
+// FLOATING PETALS
+setInterval(()=>{
+    let petal = document.createElement("div");
+    petal.className = "petal";
+    petal.innerHTML = "❄️";
+    petal.style.left = Math.random()*100+"vw";
+    petal.style.animationDuration = (Math.random()*3+3)+"s";
+    document.body.appendChild(petal);
+
+    setTimeout(()=>petal.remove(),6000);
+},300);
+
+// HEARTS
+function hearts(){
+    for(let i=0;i<50;i++){
+        let h=document.createElement("div");
+        h.innerHTML="❤️";
+        h.style.position="fixed";
+        h.style.left=Math.random()*100+"vw";
+        h.style.top="-10px";
+        h.style.animation="fall 4s linear";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),4000);
+    }
+}
+</script>       
+
+</body>
+</html>     
