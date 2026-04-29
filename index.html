@@ -564,14 +564,41 @@ img {
 
 .qr-box img:hover {
     transform: scale(1.1);
-}    
+}  
+/* HEART AREA */
+.heart-area {
+    position: relative;
+    overflow: hidden;
+}
+
+/* FLOATING HEART */
+.floating-heart {
+    position: absolute;
+    bottom: -10px;
+    font-size: 16px;
+    opacity: 0.8;
+    animation: floatUp linear forwards;
+}
+
+/* ANIMATION */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-150px) scale(1.5);
+        opacity: 0;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="hero">
-    <img src="https://i.ibb.co/VWLmpgC1/file-2.png">
+    <img src="https://i.ibb.co/20K3tfyS/Thaali.jpg">
 
     <div class="center-text">
         <h1>திருமண அழைப்பிதழ்</h1>
@@ -583,10 +610,15 @@ img {
         </div>
     </div>
 
-    <img src="https://i.ibb.co/0VXTzt2W/file-1.png">
+    <img src="https://i.ibb.co/WvKLCmgN/file-2.png">
 </div>
 
 <div class="countdown-card" id="countdown">
+    <div class="countdown-header heart-area">
+    <h2>Our Journey Begins In</h2>
+    <p>Every second brings us closer to forever ✨</p>
+    </div>
+
     <div class="time-box">
         <span id="days">0</span>
         <p>Days</p>
@@ -678,6 +710,37 @@ setInterval(() => {
 
 }, 1000);
 
+setInterval(() => {
+
+    const area = document.querySelector(".heart-area");
+
+    let heart = document.createElement("div");
+    heart.className = "floating-heart";
+
+    const hearts = ["❤️","💖","💘","💕"];
+    heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+    area.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 4000);
+
+}, 400);
+
+// FLOATING PETALS
+setInterval(()=>{
+    let petal = document.createElement("div");
+    petal.className = "petal";
+    petal.innerHTML = "❄️";
+    petal.style.left = Math.random()*100+"vw";
+    petal.style.animationDuration = (Math.random()*3+3)+"s";
+    document.body.appendChild(petal);
+
+    setTimeout(()=>petal.remove(),6000);
+},300);
+
 const details = document.querySelector(".animated-details");
 
 const observer = new IntersectionObserver(entries => {
@@ -702,6 +765,7 @@ observer2.observe(ultraDetails);
 
 observer.observe(details);
 
+
 //  MAP CONTAINER
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -725,18 +789,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(updateQR, 10000);
 
 });
-
-// FLOATING PETALS
-setInterval(()=>{
-    let petal = document.createElement("div");
-    petal.className = "petal";
-    petal.innerHTML = "❄️";
-    petal.style.left = Math.random()*100+"vw";
-    petal.style.animationDuration = (Math.random()*3+3)+"s";
-    document.body.appendChild(petal);
-
-    setTimeout(()=>petal.remove(),6000);
-},300);
 
 // HEARTS
 function hearts(){
