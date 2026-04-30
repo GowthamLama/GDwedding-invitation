@@ -729,18 +729,6 @@ setInterval(() => {
 
 }, 400);
 
-// FLOATING PETALS
-setInterval(()=>{
-    let petal = document.createElement("div");
-    petal.className = "petal";
-    petal.innerHTML = "💕";
-    petal.style.left = Math.random()*100+"vw";
-    petal.style.animationDuration = (Math.random()*3+3)+"s";
-    document.body.appendChild(petal);
-
-    setTimeout(()=>petal.remove(),6000);
-},300);
-
 const details = document.querySelector(".animated-details");
 
 const observer = new IntersectionObserver(entries => {
