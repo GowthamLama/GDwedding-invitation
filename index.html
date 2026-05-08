@@ -1706,6 +1706,741 @@ img {
     }
 }
 
+/* =========================================
+   UNIVERSAL PERFORMANCE + RESPONSIVE FIX
+========================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+    width:100%;
+    max-width:100vw;
+
+    text-rendering:optimizeSpeed;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* GPU BOOST */
+img,
+.hero,
+.card,
+.detail-card,
+.event-card,
+.lock-btn,
+.rsvp-card,
+#curtain,
+#divineLight{
+    transform:translateZ(0);
+    backface-visibility:hidden;
+    will-change:transform, opacity;
+}
+
+/* =========================================
+   ALL IMAGES RESPONSIVE
+========================================= */
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+/* =========================================
+   CURTAIN RESPONSIVE
+========================================= */
+
+#curtain{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    z-index:9999;
+
+    display:flex;
+}
+
+#curtain .left,
+#curtain .right{
+
+    width:50%;
+    height:100vh;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    transition:transform 1.5s ease;
+}
+
+#curtain.open .left{
+    transform:translateX(-100%);
+}
+
+#curtain.open .right{
+    transform:translateX(100%);
+}
+
+/* =========================================
+   DIVINE LIGHT RESPONSIVE
+========================================= */
+
+#divineLight{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    z-index:9998;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+    background:black;
+}
+
+#divineLight.show{
+    opacity:1;
+}
+
+.divine-center-image{
+
+    width:70%;
+    max-width:350px;
+
+    object-fit:contain;
+}
+
+/* =========================================
+   LOCK BUTTON RESPONSIVE
+========================================= */
+
+.center-lock{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+
+    z-index:10000;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.lock-btn img{
+
+    width:120px;
+    max-width:30vw;
+
+    cursor:pointer;
+
+    animation:pulseLock 2s infinite;
+}
+
+.magic-text{
+
+    margin-top:15px;
+
+    color:white;
+
+    font-size:16px;
+
+    text-align:center;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero{
+
+    min-height:100vh;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:30px;
+
+    padding:30px;
+
+    flex-wrap:wrap;
+
+    text-align:center;
+}
+
+.hero img{
+
+    width:280px;
+    max-width:80vw;
+
+    border-radius:20px;
+}
+
+/* =========================================
+   TEXT RESPONSIVE
+========================================= */
+
+.names{
+
+    font-size:clamp(30px, 6vw, 60px);
+
+    line-height:1.2;
+
+    text-align:center;
+}
+
+.center-text h1{
+
+    font-size:clamp(22px, 4vw, 42px);
+}
+
+/* =========================================
+   CARDS RESPONSIVE
+========================================= */
+
+.card,
+.detail-card,
+.event-card,
+.rsvp-card{
+
+    width:min(90%, 500px);
+
+    margin:auto;
+}
+
+/* =========================================
+   COUNTDOWN RESPONSIVE
+========================================= */
+
+.countdown-card{
+
+    width:95%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    padding:20px;
+}
+
+.time-box{
+
+    min-width:70px;
+}
+
+/* =========================================
+   MAP RESPONSIVE
+========================================= */
+
+.map-container iframe{
+
+    width:100%;
+    height:300px;
+}
+
+/* =========================================
+   MOBILE OPTIMIZATION
+========================================= */
+
+@media (max-width:768px){
+
+    body{
+        background-attachment:scroll;
+    }
+
+    .hero{
+        flex-direction:column;
+    }
+
+    .hero img{
+        width:220px;
+    }
+
+    .lock-btn img{
+        width:90px;
+    }
+
+    .magic-text{
+        font-size:14px;
+    }
+
+    .countdown-card{
+        flex-direction:column;
+    }
+
+    .time-box span{
+        font-size:24px;
+    }
+
+    /* REDUCE HEAVY EFFECTS */
+
+    .detail-card,
+    .card,
+    .rsvp-card,
+    .event-card{
+
+        backdrop-filter:none;
+    }
+
+    #divineLight{
+        animation:none;
+    }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width:769px) and (max-width:1024px){
+
+    .hero{
+        gap:20px;
+    }
+
+    .hero img{
+        width:240px;
+    }
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width:1400px){
+
+    .hero{
+        max-width:1400px;
+        margin:auto;
+    }
+
+    .card,
+    .rsvp-card{
+        max-width:800px;
+    }
+}
+
+/* =========================================
+   SIMPLE SMOOTH ANIMATIONS
+========================================= */
+
+@keyframes pulseLock{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}/* =========================================
+   UNIVERSAL PERFORMANCE + RESPONSIVE FIX
+========================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+    width:100%;
+    max-width:100vw;
+
+    text-rendering:optimizeSpeed;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* GPU BOOST */
+img,
+.hero,
+.card,
+.detail-card,
+.event-card,
+.lock-btn,
+.rsvp-card,
+#curtain,
+#divineLight{
+    transform:translateZ(0);
+    backface-visibility:hidden;
+    will-change:transform, opacity;
+}
+
+/* =========================================
+   ALL IMAGES RESPONSIVE
+========================================= */
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+/* =========================================
+   CURTAIN RESPONSIVE
+========================================= */
+
+#curtain{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    z-index:9999;
+
+    display:flex;
+}
+
+#curtain .left,
+#curtain .right{
+
+    width:50%;
+    height:100vh;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    transition:transform 1.5s ease;
+}
+
+#curtain.open .left{
+    transform:translateX(-100%);
+}
+
+#curtain.open .right{
+    transform:translateX(100%);
+}
+
+/* =========================================
+   DIVINE LIGHT RESPONSIVE
+========================================= */
+
+#divineLight{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    z-index:9998;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+    background:black;
+}
+
+#divineLight.show{
+    opacity:1;
+}
+
+.divine-center-image{
+
+    width:70%;
+    max-width:350px;
+
+    object-fit:contain;
+}
+
+/* =========================================
+   LOCK BUTTON RESPONSIVE
+========================================= */
+
+.center-lock{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+
+    z-index:10000;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.lock-btn img{
+
+    width:120px;
+    max-width:30vw;
+
+    cursor:pointer;
+
+    animation:pulseLock 2s infinite;
+}
+
+.magic-text{
+
+    margin-top:15px;
+
+    color:white;
+
+    font-size:16px;
+
+    text-align:center;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero{
+
+    min-height:100vh;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:30px;
+
+    padding:30px;
+
+    flex-wrap:wrap;
+
+    text-align:center;
+}
+
+.hero img{
+
+    width:280px;
+    max-width:80vw;
+
+    border-radius:20px;
+}
+
+/* =========================================
+   TEXT RESPONSIVE
+========================================= */
+
+.names{
+
+    font-size:clamp(30px, 6vw, 60px);
+
+    line-height:1.2;
+
+    text-align:center;
+}
+
+.center-text h1{
+
+    font-size:clamp(22px, 4vw, 42px);
+}
+
+/* =========================================
+   CARDS RESPONSIVE
+========================================= */
+
+.card,
+.detail-card,
+.event-card,
+.rsvp-card{
+
+    width:min(90%, 500px);
+
+    margin:auto;
+}
+
+/* =========================================
+   COUNTDOWN RESPONSIVE
+========================================= */
+
+.countdown-card{
+
+    width:95%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    padding:20px;
+}
+
+.time-box{
+
+    min-width:70px;
+}
+
+/* =========================================
+   MAP RESPONSIVE
+========================================= */
+
+.map-container iframe{
+
+    width:100%;
+    height:300px;
+}
+
+/* =========================================
+   MOBILE OPTIMIZATION
+========================================= */
+
+@media (max-width:768px){
+
+    body{
+        background-attachment:scroll;
+    }
+
+    .hero{
+        flex-direction:column;
+    }
+
+    .hero img{
+        width:220px;
+    }
+
+    .lock-btn img{
+        width:90px;
+    }
+
+    .magic-text{
+        font-size:14px;
+    }
+
+    .countdown-card{
+        flex-direction:column;
+    }
+
+    .time-box span{
+        font-size:24px;
+    }
+
+    /* REDUCE HEAVY EFFECTS */
+
+    .detail-card,
+    .card,
+    .rsvp-card,
+    .event-card{
+
+        backdrop-filter:none;
+    }
+
+    #divineLight{
+        animation:none;
+    }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width:769px) and (max-width:1024px){
+
+    .hero{
+        gap:20px;
+    }
+
+    .hero img{
+        width:240px;
+    }
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width:1400px){
+
+    .hero{
+        max-width:1400px;
+        margin:auto;
+    }
+
+    .card,
+    .rsvp-card{
+        max-width:800px;
+    }
+}
+
+/* =========================================
+   SIMPLE SMOOTH ANIMATIONS
+========================================= */
+
+@keyframes pulseLock{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
 </style>
 </head>
 
