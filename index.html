@@ -1729,6 +1729,32 @@ img {
     }
 }
 
+#musicBtn{
+
+    position:fixed;
+
+    bottom:20px;
+    right:20px;
+
+    z-index:9999;
+
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(0,0,0,0.6);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+}
+
 </style>
 </head>
 
@@ -1746,9 +1772,15 @@ img {
     <p class="magic-text">Tap to unlock ✨</p>
 </div>
 
+<audio id="bgMusic" loop>
+    <source src="https://files.catbox.moe/zf39tz.mp3" type="audio/mp3">
+</audio>
+
+<button id="musicBtn">🔊</button>
+
 <div class="main-content">
 
-    <!-- your hero -->
+    <!-- your hero -->  
     <!-- countdown -->
     <!-- cards -->
     <!-- everything else -->
@@ -2069,25 +2101,53 @@ function startMagic(){
     const lock =
     document.querySelector(".center-lock");
 
-    // OPEN DOOR
+    // 🎵 MUSIC
+    const music =
+    document.getElementById("bgMusic");
+
+    music.volume = 0.35;
+
+    music.play();
+
+    // 🛕 OPEN CURTAIN
     setTimeout(()=>{
-        curtain.classList.add("open");  
+        curtain.classList.add("open");
     },300);
 
-    // HIDE LOCK
+    // 🔓 HIDE LOCK
     lock.style.display = "none";
 
-    // SHOW CONTENT
+    // ✨ SHOW CONTENT
     setTimeout(()=>{
         content.classList.add("show");
         document.body.classList.remove("no-scroll");
     },1200);
 
-    // REMOVE CURTAIN
+    // 🧹 REMOVE CURTAIN
     setTimeout(()=>{
         curtain.remove();
     },2500);
 }
+
+const music =
+document.getElementById("bgMusic");
+
+const btn =
+document.getElementById("musicBtn");
+
+btn.onclick = () => {
+
+    if(music.paused){
+
+        music.play();
+        btn.innerHTML = "🔊";
+
+    }else{
+
+        music.pause();
+        btn.innerHTML = "🔇";
+    }
+};
 
 setInterval(() => {
 
