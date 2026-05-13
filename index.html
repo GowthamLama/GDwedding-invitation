@@ -1744,15 +1744,257 @@ img {
     border:none;
     border-radius:50%;
 
-    background:rgba(0,0,0,0.6);
+    background:rgba(0, 0, 0, 0.6);
 
-    color:white;
+    color:rgb(0, 110, 255);
 
     font-size:22px;
 
     cursor:pointer;
 
     backdrop-filter:blur(10px);
+}
+
+/* WISHES SECTION */
+.wishes-section{
+    padding:60px 0;
+    overflow:hidden;
+    position:relative;
+    text-align:center;
+}
+
+/* SLIDER AREA */
+.wishes-slider{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    margin-top:30px;
+}
+
+/* MOVING TRACK */
+.wish-track{
+    display:flex;
+    gap:20px;
+    width:max-content;
+
+    animation:scrollWish 40s linear infinite;
+}
+
+/* CARD */
+.wish-card{
+
+    min-width:280px;
+    max-width:280px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    box-shadow:0 0 20px rgba(255,255,255,0.15);
+
+    color:white;
+
+    text-align:left;
+}
+
+/* NAME */
+.wish-card h3{
+    color:#ff4da6;
+    margin-bottom:10px;
+}
+
+/* MESSAGE */
+.wish-card p{
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* TIME */
+.wish-time{
+    margin-top:10px;
+    font-size:12px;
+    opacity:0.7;
+}
+
+/* AUTO SCROLL */
+@keyframes scrollWish{
+
+    from{
+        transform:translateX(100%);
+    }
+
+    to{
+        transform:translateX(-100%);
+    }
+}
+
+/* HEART PARTICLES */
+.wish-particles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.wish-heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:18px;
+
+    animation:wishFloat linear forwards;
+}
+
+@keyframes wishFloat{
+
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-250px) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* THANK YOU SECTION */
+.thankyou-section{
+
+    position: relative;
+
+    width: 90%;
+    max-width: 700px;
+
+    margin: 80px auto;
+
+    padding: 50px 30px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 0 30px rgba(255,255,255,0.12),
+    0 0 60px rgba(255,0,150,0.15);
+}
+
+.thankyou-section h2{
+
+    font-size: 40px;
+
+    margin-bottom: 20px;
+
+    font-family: 'Playfair Display', serif;
+
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+.thankyou-section p{
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    color: rgba(255,255,255,0.92);
+}
+
+/* GLOW */
+.thankyou-glow{
+
+    position: absolute;
+
+    inset: -3px;
+
+    border-radius: 30px;
+
+    z-index: -1;
+
+    filter: blur(12px);
+
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.8),
+        rgba(255,0,150,0.5),
+        rgba(0,0,0,0.8),
+        rgba(0,183,255,0.5)
+    );
+
+    animation: thankRotate 8s linear infinite;
+}
+
+@keyframes thankRotate{
+
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+/* FLOAT HEARTS */
+.thank-heart{
+
+    position: absolute;
+
+    bottom: -20px;
+
+    font-size: 20px;
+
+    animation: thankFloat linear forwards;
+}
+
+@keyframes thankFloat{
+
+    0%{
+        transform:
+        translateY(0)
+        scale(1);
+
+        opacity: 1;
+    }
+
+    100%{
+        transform:
+        translateY(-300px)
+        scale(1.8)
+        rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+@media (max-width:768px){
+
+    .thankyou-section{
+
+        padding: 40px 20px;
+    }
+
+    .thankyou-section h2{
+
+        font-size: 30px;
+    }
+
+    .thankyou-section p{
+
+        font-size: 15px;
+    }
 }
 
 </style>
@@ -1996,10 +2238,43 @@ img {
 
 </div>
 
+<div class="wishes-section">
+
+    <h2>💖 Blessings & Wishes</h2>
+
+    <div class="wishes-slider">
+
+        <div class="wish-track" id="wishesContainer"></div>
+
+        <div class="wish-particles"></div>
+
+    </div>
+
+</div>
+    
 <div style="text-align:center;">
     <button class="wish-btn" onclick="hearts(event)">💖 Wish Us</button>    
 </div>
-    
+ 
+<!-- THANK YOU SECTION -->
+<div class="thankyou-section">
+
+    <div class="thankyou-glow"></div>
+
+    <h2>Thank You ✨</h2>
+
+    <p>
+        Thank you for being a part of our beautiful journey ❤️
+        <br><br>
+        Your love, blessings, and presence mean the world to us.
+        <br><br>
+        We cannot wait to celebrate this unforgettable moment together 💍
+    </p>
+
+    <div class="thank-hearts"></div>
+
+</div>
+
 <meta name="author" content="Gowtham">
 <meta name="copyright" content="© 2026 Gowtham. All Rights Reserved.">
 <meta name="generator" content="Custom Wedding Invitation by Gowtham">
@@ -2013,8 +2288,28 @@ Unauthorized copying, reproduction, or distribution of this code/design is prohi
 © 2026 Gowtham. All Rights Reserved. <br>
 Designed & Developed by Gowtham ❤️ Devadharshini
 </footer>
-    
+  
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
 <script>
+
+// 🔥 FIREBASE CONFIG
+const firebaseConfig = {
+  apiKey: "AIzaSyBlUDcIj8sElURzPmuLhEwNssm7CaE3_Xc",
+  authDomain: "gd-wedding-rsvp.firebaseapp.com",
+  databaseURL: "https://gd-wedding-rsvp-default-rtdb.firebaseio.com",
+  projectId: "gd-wedding-rsvp",
+  storageBucket: "gd-wedding-rsvp.firebasestorage.app",
+  messagingSenderId: "416515240449",
+  appId: "1:416515240449:web:8b927800e6841b082d4600"
+};
+
+// 🔥 START FIREBASE
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
 
 window.addEventListener("scroll", () => {
 
@@ -2504,33 +2799,23 @@ function sendWish(){
 
         alert("Please fill all fields ❤️");
         return;
-
     }
 
-    const text =
-`✨ Wedding Wishes ✨
+    // 🔥 SAVE TO FIREBASE
+    db.ref("wishes").push({
 
-From: ${name}
+        name: name,
+        wish: wish,
+        time: new Date().toLocaleString()
 
-Message:
-${wish}
+    });
 
-💍❤️`;
-
-    // 🔥 YOUR NUMBER
-    const phone = "919791897380";
-
-    // ✅ WHATSAPP URL
-    const whatsappURL =
-    `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-
-    // OPEN WHATSAPP
-    window.open(whatsappURL, "_blank");
+    // SUCCESS
+    alert("Thank you for your  wishes 💖");
 
     // RESET
     document.getElementById("guestName").value = "";
     document.getElementById("guestWish").value = "";
-
 }
 
 // 👑 RSVP PARTICLES
@@ -2566,6 +2851,101 @@ setInterval(() => {
     }, 6000);
 
 }, 400);
+
+// 🔥 LOAD WISHES
+db.ref("wishes").on("value", snapshot => {
+
+    const container =
+    document.getElementById("wishesContainer");
+
+    container.innerHTML = "";
+
+    snapshot.forEach(child => {
+
+        const data = child.val();
+
+        const card =
+        document.createElement("div");
+
+        card.className = "wish-card";
+
+        card.innerHTML = `
+            <h3>💖 ${data.name}</h3>
+            <p>${data.wish}</p>
+            <div class="wish-time">${data.time}</div>
+        `;
+
+        container.appendChild(card);
+
+    });
+
+});
+
+// 💖 FLOATING HEARTS
+setInterval(() => {
+
+    const container =
+    document.querySelector(".wish-particles");
+
+    if(!container) return;
+
+    let heart =
+    document.createElement("div");
+
+    heart.className = "wish-heart";
+
+    const hearts = ["❤️","💖","💕","💘"];
+
+    heart.innerHTML =
+    hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+    Math.random()*100 + "%";
+
+    heart.style.animationDuration =
+    (Math.random()*3 + 3) + "s";
+
+    container.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+
+}, 400);
+
+// THANK YOU FLOATING HEARTS
+setInterval(() => {
+
+    const container =
+    document.querySelector(".thank-hearts");
+
+    if(!container) return;
+
+    let heart =
+    document.createElement("div");
+
+    heart.className = "thank-heart";
+
+    const hearts = [
+        "❤️","💖","💕","💘","✨"
+    ];
+
+    heart.innerHTML =
+    hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+    Math.random()*100 + "%";
+
+    heart.style.animationDuration =
+    (Math.random()*3 + 3) + "s";
+
+    container.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+
+}, 500);
 
 </script>       
 
