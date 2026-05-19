@@ -1780,6 +1780,16 @@ img {
     animation:scrollWish 40s linear infinite;
 }
 
+/* HOLD SLIDER ON CLICK / TOUCH */
+.wish-track.paused {
+    animation-play-state: paused;
+    cursor: grabbing;
+}
+
+.wish-track {
+    cursor: grab;
+}
+
 /* CARD */
 .wish-card{
 
@@ -1997,6 +2007,96 @@ img {
     }
 }
 
+/* SCROLL MAGIC TEXT */
+.scroll-magic{
+
+    position:absolute;
+
+    bottom:40px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:10;
+
+    text-align:left;
+
+    animation: magicFloat 2s ease-in-out infinite;
+
+    width:90%;
+}
+
+/* ENGLISH */
+.scroll-magic span:first-child{
+
+    display:block;
+
+    font-size:16px;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,0.8);
+
+    margin-bottom:8px;
+}
+
+/* TAMIL */
+.scroll-magic span:last-child{
+
+    display:block;
+
+    font-size:15px;
+
+    color:rgba(255,255,255,0.9);
+
+    text-shadow:
+    0 0 8px rgba(255,255,255,0.6);
+}
+
+/* FLOAT */
+@keyframes magicFloat{
+
+    0%{
+        transform:
+        translateX(-50%)
+        translateY(0px);
+    }
+
+    50%{
+        transform:
+        translateX(-50%)
+        translateY(-10px);
+    }
+
+    100%{
+        transform:
+        translateX(-50%)
+        translateY(0px);
+    }
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+    .scroll-magic{
+
+        bottom:25px;
+    }
+
+    .scroll-magic span:first-child{
+
+        font-size:13px;
+    }
+
+    .scroll-magic span:last-child{
+
+        font-size:12px;
+    }
+}
+
 </style>
 </head>
 
@@ -2035,6 +2135,10 @@ img {
     <div class="hero-particles1"></div>
     <div class="hero-logo">
     <img src="https://i.ibb.co/R4hzcP6x/Chat-GPT-Image-May-1-2026-10-53-45-AM.png">
+    <div class="scroll-magic">
+        <span>↓ Scroll Down To See The Magic ✨</span>
+        <span>↓ மாயத்தை காண கீழே செல்லுங்கள் ✨</span>
+    </div>
     </div>
 
 </div>
@@ -2947,6 +3051,27 @@ setInterval(() => {
 
 }, 500);
 
+// 🛑 HOLD WISH SLIDER ON TOUCH / CLICK
+const wishTrack = document.getElementById("wishesContainer");
+
+function pauseSlider() {
+    wishTrack.style.animationPlayState = "paused";
+}
+
+function resumeSlider() {
+    wishTrack.style.animationPlayState = "running";
+}
+
+// DESKTOP
+wishTrack.addEventListener("mouseenter", pauseSlider);
+wishTrack.addEventListener("mouseleave", resumeSlider);
+
+wishTrack.addEventListener("mousedown", pauseSlider);
+document.addEventListener("mouseup", resumeSlider);
+
+// MOBILE + TABLET
+wishTrack.addEventListener("touchstart", pauseSlider, { passive: true });
+document.addEventListener("touchend", resumeSlider);
 </script>       
 
 </body>
